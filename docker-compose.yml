@@ -26,6 +26,7 @@ services:
     ports:
       - 8000:8000/tcp
     networks:
+      - frontnet
       - backnet
     environment:
       - MONGO=mongodb
@@ -47,6 +48,7 @@ services:
       - EXCLUDE_URLS=".*github.com"
     depends_on:
       - mongodb
+      - rabbitmq
     networks:
       - backnet
 
@@ -57,3 +59,4 @@ volumes:
 
 networks:
   backnet:
+  frontnet:
